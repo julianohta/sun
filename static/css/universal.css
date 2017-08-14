@@ -6,6 +6,10 @@
 body {
   background-color: #f5f5f5; }
 
+a, a:visited, a:hover {
+  color: black;
+  text-decoration: none; }
+
 .list {
   padding: 16px;
   width: 100%; }
@@ -15,24 +19,29 @@ body {
     width: 33.33%; }
   .list__content {
     width: 100%;
-    padding: 16px;
-    background-color: #d0d0d0; }
+    padding: 32px;
+    padding-top: 26px;
+    padding-top: 26px;
+    background-color: #f5f5f5;
+    box-shadow: 0px 0px 8px #AAAAAA; }
   .list__date {
-    margin-top: 16px; }
+    margin-top: 8px; }
   .list__title {
-    margin-top: 16px;
+    font-size: 24px;
+    margin-top: 8px;
     display: inline-block; }
   .list__img {
     display: inline-block;
     width: 100%;
-    padding-top: 100%;
+    height: 200px;
+    padding-top: 70%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center; }
 
 .nav {
-  height: 34px;
-  line-height: 34px;
+  height: 32px;
+  line-height: 32px;
   background-color: #303030;
   color: white;
   width: 100%;
