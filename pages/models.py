@@ -13,3 +13,4 @@ class Page(models.Model):
     html = models.TextField()
     head = models.TextField(null=True)
     slug = models.CharField(max_length=20)
+    visible = models.BooleanField(default=False)
