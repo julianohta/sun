@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+    <div class="list">
+        {% for page in pages %}
+            <div class="list__item">
+                <div class="list__content">
+                    <div class="list__img" style="background-image: url('/media/{{ page.img }}');"></div>
+                    <div class="list__title">
+                        <a href="{% url 'pages:page_detail' page.slug %}">
+                            {{ page.title }}
+                        </a>
+                    </div>
+                    <div class="list__date">
+                        {{ page.date }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/universal.css' %}">
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    <div class="nav">
+        <div class="nav__icon">sun</div>
+        <div class="nav__search">search</div>
+        <div class="nav__link">twitter</div>
+        <div class="nav__link">fb</div>
+        <div class="nav__link">rss</div>
+        <div class="nav__link">tube</div>
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

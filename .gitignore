@@ -1,0 +1,10 @@
+secret.py
+*.map
+*.pyc
+db.*
+.idea
+venv
+migrations
+media
+*.scss
+.sass*
