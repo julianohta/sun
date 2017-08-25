@@ -11,19 +11,17 @@ a, a:visited, a:hover {
   text-decoration: none; }
 
 .list {
-  padding: 16px;
+  padding: 8px;
   width: 100%; }
   .list__item {
     display: inline-block;
-    padding: 16px;
+    padding: 8px;
     width: 33.33%; }
   .list__content {
     width: 100%;
-    padding: 32px;
-    padding-top: 26px;
-    padding-top: 26px;
+    padding: 16px;
     background-color: #f5f5f5;
-    box-shadow: 0px 0px 8px #AAAAAA; }
+    box-shadow: 0px 0px 16px #AAAAAA; }
   .list__date {
     margin-top: 8px; }
   .list__title {
