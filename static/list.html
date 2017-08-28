@@ -5,21 +5,63 @@
 {% endblock %}
 
 {% block content %}
+    <div class="filter">
+        <div class="filter__section">
+            <div class="filter__text">
+                Filter:
+            </div>
+            <div class="filter__text">
+                <a href="{% url 'pages:page_list' page=1 article_genre=genre article_filter=filter %}">Date</a>
+            </div>
+            <div class="filter__text">
+                Popularity
+            </div>
+            <div class="filter__text">
+                Random
+            </div>
+        </div>
+        <div class="filter__section">
+            <div class="filter__text">
+                Genre:
+            </div>
+            <div class="filter__text">
+                <a href="{% url 'pages:page_list' page=1 article_genre='current_events' article_filter=filter %}">Current Events</a>
+            </div>
+            <div class="filter__text">
+                <a href="{% url 'pages:page_list' page=1 article_genre='opinion' article_filter=filter %}">Opinion</a>
+            </div>
+            <div class="filter__text">
+                <a href="{% url 'pages:page_list' page=1 article_genre='sports' article_filter=filter %}">Sports</a>
+            </div>
+            <div class="filter__text">
+                <a href="{% url 'pages:page_list' page=1 article_genre='entertainment' article_filter=filter %}">Entertainment</a>
+            </div>
+            <div class="filter__text">
+                <a href="{% url 'pages:page_list' page=1 article_genre='science' article_filter=filter %}">Science</a>
+            </div>
+            <div class="filter__text">
+                <a href="{% url 'pages:page_list' page=1 article_genre='dining' article_filter=filter %}">Dining</a>
+            </div>
+        </div>
+    </div>
     <div class="list">
         {% for page in pages %}
-            <div class="list__item">
-                <a href="{% url 'pages:page_detail' page.slug %}">
-                    <div class="list__content">
+            {% if page.visible %}
+                <div class="list__item">
+                    <a href="{% url 'pages:page_detail' page.slug %}">
                         <div class="list__img" style="background-image: url('/media/{{ page.img }}');"></div>
                         <div class="list__title">
-                                {{ page.title }}
+                            {{ page.title }}
                         </div>
-                        <div class="list__date">
-                            {{ page.date }}
+                        <div class="list__text">
+                            {{ page.author }}
                         </div>
-                    </div>
-                </a>
-            </div>
+                        <div class="list__text">
+                            {{ page.summary }}
+                        </div>
+                    </a>
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}

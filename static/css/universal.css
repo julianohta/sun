@@ -10,23 +10,42 @@ a, a:visited, a:hover {
   color: black;
   text-decoration: none; }
 
+.filter {
+  width: 100%;
+  display: inline-block; }
+  .filter__section {
+    margin-left: 8px;
+    margin-right: 32px;
+    display: inline-block; }
+  .filter__text {
+    line-height: 32px;
+    display: inline-block;
+    margin-left: 8px;
+    margin-right: 8px; }
+  .filter::after {
+    display: block;
+    content: ' ';
+    background-color: #707070;
+    height: 1px;
+    width: 100%;
+    background-clip: content-box;
+    padding-left: 16px;
+    padding-right: 16px; }
+
 .list {
   padding: 8px;
   width: 100%; }
   .list__item {
     display: inline-block;
     padding: 8px;
-    width: 33.33%; }
+    width: 100%; }
   .list__content {
     width: 100%;
     padding: 16px;
-    background-color: #f5f5f5;
-    box-shadow: 0px 0px 16px #AAAAAA; }
-  .list__date {
-    margin-top: 8px; }
+    background-color: #f5f5f5; }
   .list__title {
-    font-size: 24px;
-    margin-top: 8px;
+    font-size: 22px;
+    margin-top: 4px;
     display: inline-block; }
   .list__img {
     display: inline-block;
@@ -36,15 +55,18 @@ a, a:visited, a:hover {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center; }
+  .list__text {
+    margin-top: 4px; }
 
 .nav {
   height: 32px;
   line-height: 32px;
-  background-color: #101010;
   color: white;
   width: 100%;
-  padding-left: 32px;
-  padding-right: 32px; }
+  padding-left: 8px;
+  padding-right: 16px;
+  background-color: #303030;
+  overflow-y: hidden; }
   .nav__title {
     float: left; }
   .nav__icon {
@@ -72,5 +94,12 @@ a, a:visited, a:hover {
 
 .content {
   padding: 32px; }
+
+@media (min-width: 460px) {
+  .list__item {
+    width: 50%; } }
+@media (min-width: 800px) {
+  .list__item {
+    width: 25%; } }
 
 /*# sourceMappingURL=universal.css.map */

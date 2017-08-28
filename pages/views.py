@@ -1,14 +1,41 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from models import Page
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Create your views here.
-def list_view(request, page=1):
-    page_list = Page.objects.all()
+def list_view(request, page=1, article_genre='current_events', article_filter='date'):
+
+    def switch(x):
+        try:
+            return {
+                'current_events': 'CE',
+                'opinion': 'OP',
+                'sports': 'SP',
+                'entertainment': 'ET',
+                'science': 'SC',
+                'dining': 'DN'
+            }[x]
+        except KeyError:
+            return None
+
+    genre_query = switch(article_genre)
+
+    if not genre_query:
+        return redirect(reverse_lazy('pages:page_list', kwargs={'page': 1, 'article_genre': 'current_events',
+                                                                'article_filter': 'date'}))
+
+    if article_filter not in ['date', 'popularity']:
+        article_filter = 'date'
+
+    queryset = Page.objects.filter(genre=genre_query).order_by(article_filter)
+
+    page_list = queryset
     paginator = Paginator(page_list, 25)  # Show 25 contacts per page
 
     try:
@@ -20,7 +47,8 @@ def list_view(request, page=1):
         # If page is out of range (e.g. 9999), deliver last page of results.
         pages = paginator.page(paginator.num_pages)
 
-    return render(request, 'list.html', {'pages': pages})
+    return render(request, 'list.html', {'pages': pages, 'genre': article_genre, 'filter': article_filter})
+    # 'filter': article_filter
 
 
 def detail_view(request, slug):
