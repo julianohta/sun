@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Create your views here.
-def list_view(request, page=1, article_genre='current_events', article_filter='date'):
+def list_view(request, page=1, article_genre='current_events'):
 
     def switch(x):
         try:
@@ -27,16 +27,17 @@ def list_view(request, page=1, article_genre='current_events', article_filter='d
     genre_query = switch(article_genre)
 
     if not genre_query:
-        return redirect(reverse_lazy('pages:page_list', kwargs={'page': 1, 'article_genre': 'current_events',
-                                                                'article_filter': 'date'}))
+        return redirect(reverse_lazy('pages:page_list', kwargs={'page': 1, 'article_genre': 'current_events'}))
 
-    if article_filter not in ['date', 'popularity']:
-        article_filter = 'date'
-
-    queryset = Page.objects.filter(genre=genre_query).order_by(article_filter)
+    queryset = Page.objects.filter(genre=genre_query)
 
     page_list = queryset
     paginator = Paginator(page_list, 25)  # Show 25 contacts per page
+
+    try:
+        featured = Page.objects.get(featured=True)
+    except Page.DoesNotExist:
+        featured = None
 
     try:
         pages = paginator.page(page)
@@ -47,7 +48,7 @@ def list_view(request, page=1, article_genre='current_events', article_filter='d
         # If page is out of range (e.g. 9999), deliver last page of results.
         pages = paginator.page(paginator.num_pages)
 
-    return render(request, 'list.html', {'pages': pages, 'genre': article_genre, 'filter': article_filter})
+    return render(request, 'list.html', {'pages': pages, 'genre': article_genre, 'featured': featured,})
     # 'filter': article_filter
 
 

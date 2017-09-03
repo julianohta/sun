@@ -5,5 +5,4 @@ from django.urls import reverse_lazy
 
 
 def list_redirect(request):
-    return redirect(reverse_lazy('pages:page_list', kwargs={'page': 1, 'article_genre': 'current_events',
-                                                            'article_filter': 'date'}))
+    return redirect(reverse_lazy('pages:page_list', kwargs={'page': 1, 'article_genre': 'current_events'}))
