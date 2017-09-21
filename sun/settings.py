@@ -115,16 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            ['Image'],
-        ],
-        'startupMode': 'source',
-    }
-}
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 

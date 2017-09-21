@@ -53,7 +53,8 @@ a, a:visited, a:hover {
   .list__item {
     display: inline-block;
     padding: 8px;
-    width: 100%; }
+    width: 100%;
+    float: left; }
   .list__content {
     width: 100%;
     padding: 16px;
