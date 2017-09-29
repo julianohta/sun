@@ -99,7 +99,7 @@ class ProjectPage(models.Model):
     summary = models.CharField(max_length=200, null=True)
     visible = models.BooleanField(default=False)
     author = models.CharField(max_length=100, null=True)
-    slug = models.CharField(max_length=20)
+    project_slug = models.CharField(max_length=20)
 
 
 
