@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from models import Page, SimplePage
+from models import Page, SimplePage, ProjectPage
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from itertools import chain
@@ -31,7 +31,8 @@ def list_view(request, page=1, article_genre='current_events'):
         return redirect(reverse_lazy('pages:page_list', kwargs={'page': 1, 'article_genre': 'current_events'}))
 
     # queryset = Page.objects.filter(genre=genre_query)
-    queryset = list(chain(SimplePage.objects.filter(genre=genre_query), Page.objects.filter(genre=genre_query)))
+    queryset = list(chain(SimplePage.objects.filter(genre=genre_query), Page.objects.filter(genre=genre_query),
+                          ProjectPage.objects.filter(genre=genre_query)))
 
     page_list = queryset
     paginator = Paginator(page_list, 25)  # Show 25 contacts per page
