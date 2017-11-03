@@ -68,7 +68,8 @@ class SimplePage(models.Model):
     summary = models.CharField(max_length=200, null=True)
     visible = models.BooleanField(default=False)
     author = models.CharField(max_length=100, null=True)
-    alt = models.BooleanField(default=False)
+    template = models.IntegerField(default=0)
+    dark_title = models.BooleanField(default=False)
 
 
 #This model is just a placeholder with a link to an external page

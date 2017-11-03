@@ -13,20 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf import settings
-from django.conf.urls import url, include
-from django.contrib import admin
-from django.conf.urls.static import static
-from views import list_redirect
+from django.conf.urls import url
+from views import snap_view
 
 
+app_name = 'snapchat'
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^pages/', include('pages.urls', namespace='pages')),
-    url(r'^snap', include('snapchat.urls', namespace='snapchat')),
-    url(r'^$', list_redirect),
-    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^$', snap_view, name="snap"),
 ]
 
-if settings.DEBUG is True:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# (?P<article_filter>[a-zA-Z]+)/

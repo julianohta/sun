@@ -61,8 +61,4 @@ def detail_view(request, slug):
         return render(request, 'detail.html', {'page': page})
     except Page.DoesNotExist:
         page = SimplePage.objects.get(slug=slug)
-        if not page.alt:
-            return render(request, 'simple_detail.html', {'page': page})
-        else:
-            return render(request, 'simple_detail2.html', {'page': page})
-
+        return render(request, 'simple/simple{}.html'.format(page.template), {'page': page})

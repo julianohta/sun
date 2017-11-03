@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'pages.apps.PagesConfig',
+    'snapchat.apps.SnapchatConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
