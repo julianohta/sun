@@ -21,8 +21,6 @@ app_name = 'pages'
 urlpatterns = [
     url(r'^(?P<slug>[a-zA-Z0-9_-]+)/$', page_views.detail_view, name="page_detail"),
     # url(r'^(?P<page>[0-9]+)/$', page_views.list_view, name="page_list"),
-    url(r'^page_(?P<page>[0-9]+)/(?P<article_genre>[a-zA-Z_-]+)/$',
-        page_views.list_view, name="page_list"),
+    # url(r'^page_(?P<page>[0-9]+)/(?P<article_genre>[a-zA-Z_-]+)/$',
+    #     page_views.list_view, name="page_list"),
 ]
-
-# (?P<article_filter>[a-zA-Z]+)/
