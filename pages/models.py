@@ -31,7 +31,7 @@ class Page(models.Model):
     css = models.FileField(upload_to='file_uploads/')
     html = RichTextUploadingField()
     head = models.TextField(null=True)
-    slug = models.CharField(max_length=20)
+    slug = models.CharField(max_length=100)
     summary = models.CharField(max_length=200, null=True)
     visible = models.BooleanField(default=False)
     author = models.CharField(max_length=100, null=True)
@@ -64,7 +64,7 @@ class SimplePage(models.Model):
     content = RichTextUploadingField()
     featured = models.BooleanField(default=False)
     featured_img = models.ImageField(upload_to='%Y/%m/%d', null=True)
-    slug = models.CharField(max_length=20)
+    slug = models.CharField(max_length=100)
     summary = models.CharField(max_length=200, null=True)
     visible = models.BooleanField(default=False)
     author = models.CharField(max_length=100, null=True)
@@ -100,7 +100,7 @@ class ProjectPage(models.Model):
     summary = models.CharField(max_length=200, null=True)
     visible = models.BooleanField(default=False)
     author = models.CharField(max_length=100, null=True)
-    project_slug = models.CharField(max_length=20)
+    project_slug = models.CharField(max_length=100)
 
 
 
