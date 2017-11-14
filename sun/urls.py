@@ -17,6 +17,7 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
+import views
 
 
 urlpatterns = [
@@ -24,6 +25,7 @@ urlpatterns = [
     url(r'^pages/', include('pages.urls', namespace='pages')),
     url(r'^snap', include('snapchat.urls', namespace='snapchat')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^$', views.sun_redirect, name="sun")
 ]
 
 if settings.DEBUG is True:
