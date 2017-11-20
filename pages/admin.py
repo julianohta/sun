@@ -15,19 +15,29 @@ def make_invisible(modeladmin, request, queryset):
 make_invisible.short_description = "Mark selected stories as invisible"
 
 
+def make_featured(modeladmin, request, queryset):
+    queryset.update(featured=True)
+make_featured.short_description = "Mark selected stories as featured"
+
+
+def make_unfeatured(modeladmin, request, queryset):
+    queryset.update(featured=False)
+make_unfeatured.short_description = "Mark selected stories as unfeatured"
+
+
 class SimplePageAdmin(admin.ModelAdmin):
-    list_display = ['title', 'visible']
-    actions = [make_visible, make_invisible]
+    list_display = ['title', 'visible', 'featured']
+    actions = [make_visible, make_invisible, make_featured, make_unfeatured]
 
 
 class PageAdmin(admin.ModelAdmin):
-    list_display = ['title', 'visible']
-    actions = [make_visible, make_invisible]
+    list_display = ['title', 'visible', 'featured']
+    actions = [make_visible, make_invisible, make_featured, make_unfeatured]
 
 
 class ProjectPageAdmin(admin.ModelAdmin):
-    list_display = ['title', 'visible']
-    actions = [make_visible, make_invisible]
+    list_display = ['title', 'visible', 'featured']
+    actions = [make_visible, make_invisible, make_featured, make_unfeatured]
 
 # Register your models here.
 admin.site.register(Page, PageAdmin)

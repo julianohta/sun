@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#init virtualenv and runserver
+cd ..
+pwd
+source venv/bin/activate
+./manage.py runserver

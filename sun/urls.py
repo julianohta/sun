@@ -17,7 +17,7 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
-import views
+from views import list_view, contact_view
 
 
 urlpatterns = [
@@ -25,7 +25,8 @@ urlpatterns = [
     url(r'^pages/', include('pages.urls', namespace='pages')),
     url(r'^snap', include('snapchat.urls', namespace='snapchat')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    url(r'^$', views.sun_redirect, name="sun")
+    url(r'^$', list_view, name="list_view"),
+    # url(r'^contact/$', contact_view, name='contact'),
 ]
 
 if settings.DEBUG is True:

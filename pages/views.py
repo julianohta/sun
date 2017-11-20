@@ -7,6 +7,7 @@ from models import Page, SimplePage, ProjectPage
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from itertools import chain
+from django.http import Http404
 
 
 # Create your views here.
@@ -60,5 +61,10 @@ def detail_view(request, slug):
         page = Page.objects.get(slug=slug)
         return render(request, 'detail.html', {'page': page})
     except Page.DoesNotExist:
+        pass
+
+    try:
         page = SimplePage.objects.get(slug=slug)
         return render(request, 'simple/simple{}.html'.format(page.template), {'page': page})
+    except Page.DoesNotExist:
+        raise Http404("Project with slug {} does not exist".format(slug))

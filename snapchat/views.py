@@ -8,3 +8,4 @@ from models import SnapCode
 def snap_view(request):
 
     return render(request, 'snap.html', context={'snap_obj':  SnapCode.objects.latest('date'), })
+
